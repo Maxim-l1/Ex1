@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "GetById";
+}
+@model AddPost
+<div>
+    <h1>@ViewBag.Name</h1>
+    <div class="parent">
+        <div class="child">
+            <h2>Посты:</h2>
+            <br />
+            <ul>
+                @foreach (string name in ViewBag.Posts)
+                {
+                    <li>@name</li>
+                }
+            </ul>
+        </div>
+        <div class="child">
+            <form asp-area="" asp-controller="Tags" asp-action="AddPost" method="post">
+                <fieldset>
+                    <legend><strong>Добавить пост</strong></legend>
+                    <div class="form-group" style="display: none;">
+                        <input asp-for="Id" type="text" placeholder="Введите название" value="@ViewBag.Id">
+                    </div>
+                    <div class="form-group">
+                        <select asp-for="Name" style="width: 100px;">
+                            @foreach (string name in ViewBag.AllPosts)
+                            {
+                                <option value="@name">@name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Добавить</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

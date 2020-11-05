@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "New";
+}
+@model PostCreate
+<div>
+    <p>@ViewBag.Name</p>
+    <div>
+        <div>
+            <form asp-area="" asp-controller="Posts" asp-action="New" method="post">
+                <fieldset>
+                    <legend><strong>Новый пост</strong></legend>
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" type="text" placeholder="Введите название">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Text"></label>
+                        <textarea asp-for="Text"></textarea>
+                        <span asp-validation-for="Text"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Author">Автор</label>
+                        <select asp-for="Author" style="width: 100px;">
+                            @foreach (string author in ViewBag.Authors)
+                            {
+                                <option value="@author">@author</option>
+                            }
+                        </select>
+                        <span asp-validation-for="Author"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Создать</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

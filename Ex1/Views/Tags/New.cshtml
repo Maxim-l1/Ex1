@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "New";
+}
+@model TagCreate
+<div>
+    <p>@ViewBag.Name</p>
+    <div>
+        <div>
+            <form asp-area="" asp-controller="Tags" asp-action="New" method="post">
+                <fieldset>
+                    <legend><strong>Новый тег</strong></legend>
+                    <div asp-validation-summary="All"></div>
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input asp-for="Name" type="text" placeholder="Введите название">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Создать</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
